@@ -1,9 +1,18 @@
 def display_crossfit_list
-	crossfitters=read_json_file('crossfit.json')
+	crossfitters=get_crossfit_list
 	list="Currently opted in: \n"
   crossfitters.each do |crossfitter|
+    list=list+crossfitter+"\n"
+  end
+  list
+end
+
+def get_crossfit_list
+  list=[]
+  crossfitters=read_json_file('crossfit.json')
+  crossfitters.each do |crossfitter|
     if crossfitter[1]
-      list=list+crossfitter[0]+"\n"
+      list << crossfitter[0]
     end
   end
   list

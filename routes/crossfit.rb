@@ -1,7 +1,9 @@
+require 'erb'
 class Slack < Sinatra::Base
 
 	get '/crossfit' do
-		"This would be a view"
+		@crossfit_list=crossfit_list_table_html
+		erb :index
 	end
 
 	get '/crossfit/list' do

@@ -10,11 +10,11 @@ class Slack < Sinatra::Base
     set :app_file, __FILE__
   end
  
-  before do
-    unless is_authenticated(params[:token])
-      halt 401, {'Content-Type' => 'text/plain'}, 'Unauthorized!'
-    end
-  end
+  # before do
+  #   unless is_authenticated(params[:token])
+  #     halt 401, {'Content-Type' => 'text/plain'}, 'Unauthorized!'
+  #   end
+  # end
  
   get '/' do
       params[:text].nil? ? sub_commands="" : (params[:text].empty? ? sub_commands="" : sub_commands = "/"+params[:text].split.join("/"))

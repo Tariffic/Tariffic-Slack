@@ -1,18 +1,19 @@
-<HTML>
+<html>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
 <head>
 <title>Crossfit List</title>
 <%= @crossfit_list %>
 </head>
+
 <body><br><br>
 Name:
 <form id="opt">
 <input type='text' id='name'/>
 
 </form>
-<input type="button" onclick="optin()" value="Opt-in" /><input type="button" onclick="optout()" value="Opt-out" />
-<div id="test">
-</div>
+<input type="button" onclick="optin()" value="Opt-in" /><input type="button" onclick="optout()" value="Opt-out"/>
+
 <script>
 function optin(){
 	$.get( "/crossfit/in?user_name="+$("#name").val(), function( data ) {

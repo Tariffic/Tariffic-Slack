@@ -20,7 +20,7 @@ end
 
 def crossfit_opt_in(name)
   crossfitters=read_json_file('crossfit.json')
-  name.empty? ? "" : crossfitters[name]=true
+  name.empty? ? "" : crossfitters[name.downcase]=true
   write_json_file('crossfit.json',crossfitters)
   name+" opted in for next crossfit session"
 end

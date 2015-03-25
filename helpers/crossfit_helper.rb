@@ -27,7 +27,7 @@ end
 
 def crossfit_opt_out(name)
   crossfitters=read_json_file('crossfit.json')
-  crossfitters[name]=false
+  name.empty? ? "" : crossfitters[name.downcase]=false
   write_json_file('crossfit.json',crossfitters)
   name+" opted out for next crossfit session"
 end

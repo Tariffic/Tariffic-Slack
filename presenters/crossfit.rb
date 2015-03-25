@@ -1,5 +1,5 @@
 def crossfit_list_table_html
-  html_out="<table><tr><th>Name</th></tr>"
+  html_out="<table border=1><tr><th>Name</th></tr>"
   crossfitters=get_crossfit_list
   crossfitters.each do |crossfitter|
   	html_out << "<tr><td>#{crossfitter}</td></tr>"

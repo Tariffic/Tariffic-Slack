@@ -1,5 +1,9 @@
 class Slack < Sinatra::Base
 
+	get '/crossfit' do
+		"This would be a view"
+	end
+
 	get '/crossfit/list' do
 		display_crossfit_list
 	end

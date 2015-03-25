@@ -16,7 +16,7 @@ class Slack < Sinatra::Base
   end
  
   get '/' do
-      params[:text].empty? ? sub_commands="" : sub_commands = "/"+params[:text].split.join("/")
+      params[:text].nil? ? sub_commands="" : (params[:text].empty? ? sub_commands="" : sub_commands = "/"+params[:text].split.join("/"))
       status, headers, body = call! env.merge("PATH_INFO" => "#{params[:command]}#{sub_commands}")
       [status, headers, body]
   end

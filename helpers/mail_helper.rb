@@ -8,5 +8,33 @@ Mail.defaults do
 end
 
 def check_mail()
-	
+	emails = Mail.find(:what => :last,:count => 4,:order => :asc)
+end
+
+def append_processed_email(email)
+  open('receivedmails', 'a') { |f|
+    f.puts email
+  }
+end
+
+def email_has_been_processed(email)
+  emails=read_already_processed_emails_to_array()
+  	emails.each do |processed_email|
+  		if email==processed_email
+  			return true
+  		end
+  	end
+  	false
+end
+
+def read_already_processed_emails_to_array()
+  emails=Array.new
+  if File.exist?("receivedmails")
+    File.read("receivedmails").each_line{|line|
+    	emails.push line.chomp
+    }
+    return emails
+  else
+    []
+  end
 end

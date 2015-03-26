@@ -18,7 +18,7 @@ class Slack < Sinatra::Base
 		crossfit_opt_out(params[:user_name])
 	end
 
-	get '/crossfit/randomize/:amount'
+	get '/crossfit/randomize/:amount' do
 		##Generate random list of crossfitters
 	end
 

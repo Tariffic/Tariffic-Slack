@@ -1,0 +1,1 @@
+require_relative 'payment_slack_notify'

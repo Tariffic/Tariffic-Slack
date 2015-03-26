@@ -2,6 +2,7 @@ require 'sinatra/base'
 require_relative 'routes/init'
 require_relative 'helpers/init'
 require_relative 'presenters/init'
+require_relative 'cron/init'
 
 class Slack < Sinatra::Base
   enable :method_override

@@ -1,6 +1,6 @@
 class SlackApi < Sinatra::Base
 	
-	get '/api/checkmail' do 
+	get '/checkmail' do 
 		process_unread_mail
 	end
 

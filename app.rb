@@ -22,7 +22,8 @@ class Slack < Sinatra::Base
 
   get '/crossfit' do
     token=ENV['SlackToken']
-    result=HTTParty.get('http://localhost:9292/api/crossfit/list', 
+    api_url=ENV['api_url']
+    result=HTTParty.get(api_url+'/api/crossfit/list', 
       :body => { 
                 :token => token
                })  

@@ -1,8 +1,7 @@
 require 'sinatra/base'
-require_relative 'routes/init'
-require_relative 'helpers/init'
+require 'httparty'
 require_relative 'presenters/init'
-require_relative 'cron/init'
+#require_relative 'api/app.rb'
 
 class Slack < Sinatra::Base
   enable :method_override
@@ -10,7 +9,7 @@ class Slack < Sinatra::Base
   configure do
     set :app_file, __FILE__
   end
- 
+  
   # before do
   #   unless is_authenticated(params[:token])
   #     halt 401, {'Content-Type' => 'text/plain'}, 'Unauthorized!'
@@ -18,9 +17,17 @@ class Slack < Sinatra::Base
   # end
  
   get '/' do
-      params[:text].nil? ? sub_commands="" : (params[:text].empty? ? sub_commands="" : sub_commands = "/"+params[:text].split.join("/"))
-      status, headers, body = call! env.merge("PATH_INFO" => "#{params[:command]}#{sub_commands}")
-      [status, headers, body]
+      "Hello World"
+  end
+
+  get '/crossfit' do
+    token=ENV['SlackToken']
+    result=HTTParty.get('http://localhost:9292/api/crossfit/list', 
+      :body => { 
+                :token => token
+               })  
+    result.body
+
   end
 
 end

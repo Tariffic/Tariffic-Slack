@@ -1,5 +1,5 @@
 require 'erb'
-class Slack < Sinatra::Base
+class SlackApi < Sinatra::Base
 
 	get '/crossfit' do
 		@crossfit_list=crossfit_list_table_html

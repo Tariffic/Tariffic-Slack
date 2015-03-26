@@ -16,13 +16,13 @@ Name:
 
 <script>
 function optin(){
-	$.get( "/crossfit/in?user_name="+$("#name").val(), function( data ) {
+	$.get( "/api/crossfit/in?user_name="+$("#name").val(), function( data ) {
   location.reload();
 });
 }
 
 function optout(){
-	$.get( "/crossfit/out?user_name="+$("#name").val(), function( data ) {
+	$.get( "/api/crossfit/out?user_name="+$("#name").val(), function( data ) {
   location.reload();
 });
 }

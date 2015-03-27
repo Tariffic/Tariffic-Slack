@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'httparty'
 require_relative 'api/helpers/init'
 require_relative 'presenters/init'
+require_relative 'routes/init'
+require_relative 'helpers/init'
 #require_relative 'api/app.rb'
 
 class Slack < Sinatra::Base

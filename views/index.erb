@@ -1,30 +1,52 @@
 <html>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
 <head>
+<link rel="stylesheet" href="/bootstrap.min.css">
 <title>Crossfit List</title>
-<%= @crossfit_list %>
-</head>
-
-<body><br><br>
+<div class="panel panel-default">
 Name:
 <form id="opt">
 <input type='text' id='name'/>
 
 </form>
-<input type="button" onclick="optin()" value="Opt-in" /><input type="button" onclick="optout()" value="Opt-out"/>
+<input type="button" class="btn-primary" onclick="optin()" value="Opt-in" /><input type="button" class="btn-primary" onclick="optout()" value="Opt-out"/>
 
 <script>
 function optin(){
-	$.get( "/api/crossfit/in?user_name="+$("#name").val(), function( data ) {
+	$.get( "/api/crossfit/in?user_name="+$("#name").val()+"&token=<%= ENV['SlackToken'] %>", function( data ) {
   location.reload();
 });
 }
 
 function optout(){
-	$.get( "/api/crossfit/out?user_name="+$("#name").val(), function( data ) {
+	$.get( "/api/crossfit/out?user_name="+$("#name").val()+"&token=<%= ENV['SlackToken'] %>", function( data ) {
   location.reload();
 });
 }
 </script>
-</HTML>
+</div>
+<h3>The following people are opted in for the next crossfit session</h3>
+<table class="table">
+<tr><th>Name</th></tr>
+<% @crossfit_list.each do |crossfitter| %>
+	<tr><td>
+	<%=crossfitter%>
+	</td></tr>
+<% end %>
+</table>
+<h3>The following people made the cut after randomization</h3>
+<table class="table">
+<tr><th>Name</th></tr>
+<% @crossfit_list.each do |crossfitter| %>
+	<tr><td>
+	<%=crossfitter%>
+	</td></tr>
+<% end %>
+</table>
+
+</head>
+
+<body>
+
+</body>
+</html>

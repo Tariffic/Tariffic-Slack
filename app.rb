@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'httparty'
+require_relative 'api/helpers/init'
 require_relative 'presenters/init'
 #require_relative 'api/app.rb'
 
@@ -23,12 +24,10 @@ class Slack < Sinatra::Base
   get '/crossfit' do
     token=ENV['SlackToken']
     api_url=ENV['api_url']
-    result=HTTParty.get(api_url+'/api/crossfit/list', 
-      :body => { 
-                :token => token
-               })  
-    result.body
-
+    @crossfit_list=get_crossfit_list
+    erb :index
   end
+
+
 
 end

@@ -40,7 +40,7 @@ def randomize
     end
     file.puts "Generated: "+(Time.now+(2*60*60)).strftime("%d/%m/%Y %H:%M")
   end
-  post_to_slack("https://hooks.slack.com/services/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",display_random_crossfitters,username="Crossfit Randomizer",icon_url=nil,icon_emoji=":muscle:",channel=nil)
+  post_to_slack(ENV['webhook_url'],display_random_crossfitters,username="Crossfit Randomizer",icon_url=nil,icon_emoji=":muscle:",channel=nil)
   return crossfitters
 end
 

@@ -14,7 +14,7 @@ def fetch_customers
 end
 
 def fetch_api_customers
-	HTTParty.get("http://7b3761e687cb42ceaabb33a50556113a.cloudapp.net/api/v1/customers",{:basic_auth => {:username => ENV['tariffic_api_user'], :password => ENV['tariffic_api_pass']}, :timeout => 180})
+	HTTParty.get(ENV['api_url'],{:basic_auth => {:username => ENV['tariffic_api_user'], :password => ENV['tariffic_api_pass']}, :timeout => 180})
 end
 
 def fetch_local_customers

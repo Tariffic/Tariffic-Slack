@@ -31,6 +31,4 @@ class Slack < Sinatra::Base
     erb :index
   end
 
-
-
 end

@@ -16,7 +16,7 @@ def process_unread_mail
     unless email_has_been_processed(email.message_id)
       append_processed_email(email.message_id)
       if email.body.decoded.downcase.include? "keyword"
-      	post_to_slack("https://hooks.slack.com/services/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","Payment Received!",username="Cha-Ching!",icon_url=nil,icon_emoji=":dollar:",channel=nil)
+      	post_to_slack(ENV['webhook_url'],"Payment Received!",username="Cha-Ching!",icon_url=nil,icon_emoji=":dollar:",channel=nil)
       end
     end
   end

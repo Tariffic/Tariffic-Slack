@@ -1,4 +1,5 @@
 require 'mail'
+require 'pry'
 Mail.defaults do
   retriever_method :pop3, :address    => "outlook.office365.com",
                           :port       => 995,
@@ -12,6 +13,7 @@ def check_mail
 end
 
 def process_unread_mail
+  binding.pry
 	check_mail.each do |email|
     unless email_has_been_processed(email.message_id)
       append_processed_email(email.message_id)
@@ -20,6 +22,7 @@ def process_unread_mail
       end
     end
   end
+  ""
 end
 
 def append_processed_email(email)

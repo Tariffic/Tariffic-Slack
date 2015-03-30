@@ -31,8 +31,8 @@ def get_customer_size(customer_name)
 end
 
 def display_customers
-	disp="Tariffic Customers:\n"
-	customers=fetch_customers
+	disp      = "Tariffic Customers:\n"
+	customers = fetch_customers
 	customers.each do |customer|
 		disp << customer["Name"]+"\n"
 	end

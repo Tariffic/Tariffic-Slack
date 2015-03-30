@@ -38,7 +38,7 @@ def randomize
     crossfitters.each do |crossfitter|
       file.puts crossfitter
     end
-    file.puts "Generated: "+Time.now.strftime("%d/%m/%Y %H:%M")
+    file.puts "Generated: "+Time.now.strftime("%d/%m/%Y %H:%M")+2*60*60
   end
   post_to_slack("https://hooks.slack.com/services/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",display_random_crossfitters,username="Crossfit Randomizer",icon_url=nil,icon_emoji=":muscle:",channel=nil)
   return crossfitters

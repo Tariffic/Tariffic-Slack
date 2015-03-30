@@ -1,5 +1,4 @@
 require 'httparty'
-
 def cache_customers
 	customers=fetch_api_customers
 	write_json_file("tariffic_customers.json",customers)
@@ -20,4 +19,14 @@ end
 
 def fetch_local_customers
 	read_json_file('tariffic_customers.json')
+end
+
+def get_customer_size(customer_name)
+	fetch_customers.each do |customer|
+		if customer['Name']==customer_name
+			return customer['LineCount'].to_s
+		end
+	end
+	status 404
+	"Customer not found"
 end

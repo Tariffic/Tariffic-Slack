@@ -24,9 +24,8 @@ end
 def get_customer_size(customer_name)
 	fetch_customers.each do |customer|
 		if customer['Name'].downcase==customer_name.downcase
-			return customer['LineCount'].to_s
+			return "#{customer_name} size: "+customer['LineCount'].to_s
 		end
 	end
-	status 404
-	"Customer not found"
+	"Customer #{customer_name} not found"
 end

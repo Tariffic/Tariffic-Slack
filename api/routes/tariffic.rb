@@ -12,4 +12,8 @@ class SlackApi < Sinatra::Base
 		get_customer_size(params[:splat][0].split('/').join(' '))
 	end
 
+	get '/tariffic/refresh' do
+		cache_customers
+	end
+
 end

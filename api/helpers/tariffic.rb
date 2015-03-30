@@ -29,3 +29,12 @@ def get_customer_size(customer_name)
 	end
 	"Customer #{customer_name} not found"
 end
+
+def display_customers
+	disp="Tariffic Customers:\n"
+	customers=fetch_customers
+	customers.each do |customer|
+		disp << customer["Name"]+"\n"
+	end
+	disp
+end

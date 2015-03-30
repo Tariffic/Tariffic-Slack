@@ -27,6 +27,7 @@ class Slack < Sinatra::Base
     token=ENV['SlackToken']
     api_url=ENV['api_url']
     @crossfit_list=get_crossfit_list
+    @crossfit_random=get_random_crossfitters
     erb :index
   end
 

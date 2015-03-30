@@ -34,16 +34,31 @@ end
 
 def randomize
   crossfitters=get_crossfit_list.sample(15)
-  write_json_file("random_crossfitters",crossfitters)
+  File.open("random_crossfitters", 'w') do |file|
+    crossfitters.each do |crossfitter|
+      file.puts crossfitter
+    end
+    file.puts "Generated: "+Time.now.strftime("%d/%m/%Y %H:%M")
+  end
+  post_to_slack("https://hooks.slack.com/services/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",display_random_crossfitters,username="Crossfit Randomizer",icon_url=nil,icon_emoji=":muscle:",channel=nil)
   return crossfitters
 end
 
+def display_random_crossfitters
+  display="The following crossfitters were randomly selected:\n"
+  get_random_crossfitters.each do |crossfitter|
+    display << crossfitter+"\n"
+  end
+  display
+end
+
 def get_random_crossfitters
-  crossfitters=[]
+  crossfitters=Array.new
   if File.exist?("random_crossfitters")
     File.read("random_crossfitters").each_line{|line|
       crossfitters.push line.chomp
     }
+    return crossfitters
   else
     []
   end

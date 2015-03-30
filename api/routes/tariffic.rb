@@ -14,6 +14,7 @@ class SlackApi < Sinatra::Base
 
 	get '/tariffic/refresh' do
 		cache_customers
+		"Refreshed customer list"
 	end
 
 end

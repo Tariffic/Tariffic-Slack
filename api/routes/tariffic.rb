@@ -8,8 +8,8 @@ class SlackApi < Sinatra::Base
 		display_customers
 	end
 
-	get '/tariffic/size/:customer' do |customer|
-		get_customer_size(customer)
+	get '/tariffic/size/*' do
+		get_customer_size(params[:splat].join(' '))
 	end
 
 end

@@ -18,8 +18,12 @@ class SlackApi < Sinatra::Base
 		crossfit_opt_out(params[:user_name])
 	end
 
-	get '/crossfit/randomize/:amount' do
-		##Generate random list of crossfitters
+	get '/crossfit/randomize' do
+		crossfitters=""
+		randomize.each do |crossfitter|
+			crossfitters << crossfitter+"\n"
+		end
+		"The following crossfitters were randomly selected:\n"+crossfitters
 	end
 
 end
